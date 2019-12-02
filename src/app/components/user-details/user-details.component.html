@@ -1,0 +1,66 @@
+<div>
+<p>User Details</p>
+<form [formGroup]="userDetailForm" (ngSubmit)="onSubmit()">
+    
+  <div class="form-group">
+    <input type="text" formControlName="name" class="form-control" placeholder="Name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+        <div *ngIf="f.name.errors.required">Name is required</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input type="text" formControlName="email" class="form-control" placeholder="Email" />
+    <!-- <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+        <div *ngIf="f.email.errors.required">Email is required</div>
+    </div> -->
+  </div>
+
+  <div class="form-group">
+    <input type="text" formControlName="address"  class="form-control" placeholder="Address" [ngClass]="{ 'is-invalid': submitted && f.address.errors }" />
+    <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+        <div *ngIf="f.address.errors.required">Address is required</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input type="text" formControlName="phone"  class="form-control" placeholder="Phone Number" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
+    <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+        <div *ngIf="f.phone.errors.required">Phone number is required</div>
+    </div>
+  </div>
+
+  <p>Payment</p>
+  <div class="form-group">
+    <input type="text" formControlName="card_number"  class="form-control" placeholder="Card Number" [ngClass]="{ 'is-invalid': submitted && f.card_number.errors }" />
+    <div *ngIf="submitted && f.card_number.errors" class="invalid-feedback">
+        <div *ngIf="f.card_number.errors.required">Card number is required</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input type="text" formControlName="security_code"  class="form-control" placeholder="Your card security code" [ngClass]="{ 'is-invalid': submitted && f.security_code.errors }" />
+    <div *ngIf="submitted && f.security_code.errors" class="invalid-feedback">
+        <div *ngIf="f.security_code.errors.required">Card number is required</div>
+    </div>
+  </div>
+
+  <div class="input-group">
+    <input type="text" formControlName="card_exp_month" class="form-control" placeholder="Card Exp Month" [ngClass]="{ 'is-invalid': submitted && f.card_exp_month.errors }"/>
+    <div *ngIf="submitted && f.card_exp_month.errors" class="invalid-feedback">
+      <div *ngIf="f.card_exp_month.errors.required">Card month exp is required</div>
+  </div>
+    <span class="input-group-addon">-</span>
+    <input type="text" formControlName="card_exp_year" class="form-control" placeholder="Card Exp Year" [ngClass]="{ 'is-invalid': submitted && f.card_exp_year.errors }" />
+    <div *ngIf="submitted && f.card_exp_year.errors" class="invalid-feedback">
+      <div *ngIf="f.card_exp_year.errors.required">Card year exp is required</div>
+  </div>
+</div>
+    <div class="m-5 form-group text-center">
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Place Order
+        </button>
+    </div>
+</form>
+</div>
