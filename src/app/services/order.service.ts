@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpHeaderResponse } from '@angular/common/htt
 import { from, Observable } from 'rxjs';
 import { Order } from '../models/Order';
 import { User } from '../models/User'
+import { SuccessModel } from '../models/SuccessModel'
 // import 'rxjs/add/operator/map'
 
 const httpOptions = {
@@ -37,8 +38,8 @@ export class OrderService {
   // }
 
 
-  public confirmUserOrder(obj):Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}confirmUserOrder`,obj, {
+  public confirmUserOrder(obj):Observable<SuccessModel> {
+    return this.http.post<SuccessModel>(`${this.baseUrl}confirmUserOrder`,obj, {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
       })

@@ -9,7 +9,8 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
 import { OrderSuccessComponent } from './components/order-success/order-success.component';
 import { OrderIdMissingComponent } from './components/order-id-missing/order-id-missing.component';
 import { OrderItemComponent } from './components/order-item/order-item.component';
-import { MainComponent} from './components/main/main.component'
+import { MainComponent} from './components/main/main.component';
+import { PaypalComponent } from './components/paypal/paypal.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +19,8 @@ import { MainComponent} from './components/main/main.component'
     OrderSuccessComponent,
     OrderIdMissingComponent,
     OrderItemComponent,
-    MainComponent
+    MainComponent,
+    PaypalComponent
   ],
   imports: [
     BrowserModule,
