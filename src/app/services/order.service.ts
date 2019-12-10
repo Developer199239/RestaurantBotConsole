@@ -16,7 +16,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class OrderService {
-  baseUrl = 'http://localhost:5000/';
+  baseUrl = 'https://restaurant-python-api.herokuapp.com/';
 
   constructor(private http:HttpClient) { }
 
