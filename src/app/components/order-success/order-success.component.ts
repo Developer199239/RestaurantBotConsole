@@ -10,7 +10,8 @@ import { Globals } from 'src/app/globals';
 })
 export class OrderSuccessComponent implements OnInit {
   userOrders: Order[] = [];
-  invoice_to = {}
+  invoice_to = {};
+  tet="";
   constructor(private router: Router, private globals: Globals) { 
     let invoice_to_temp = {
       'order_id':'#123',
@@ -24,10 +25,13 @@ export class OrderSuccessComponent implements OnInit {
 
   this.globals.INVOICE_TO = invoice_to_temp;
   this.invoice_to = this.globals.INVOICE_TO;
+  this.tet = globals.VAR1;
   }
 
   ngOnInit() {
     this.addData()
+
+    console.log()
   }
 
 
