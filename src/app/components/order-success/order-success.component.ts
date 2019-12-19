@@ -25,10 +25,14 @@ export class OrderSuccessComponent implements OnInit {
   // };
   let model = new InvoiceModel();
   model.orderId = "123";
+  model.name = "Murtuza Rahman";
+  model.email = "murtuza@gmail.com";
+  model.phone = "01738";
+  model.address = "Dhaka, Palton";
+  model.deliveryType = "ON Table";
+  model.paymentMethod = "Card";
   this.globals.INVOICE_TO = model;
   this.invoice_to = this.globals.INVOICE_TO;
-
-
   }
 
   ngOnInit() {
