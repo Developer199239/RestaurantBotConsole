@@ -12,8 +12,18 @@ export class OrderSuccessComponent implements OnInit {
   userOrders: Order[] = [];
   invoice_to = {}
   constructor(private router: Router, private globals: Globals) { 
-    
-    
+    let invoice_to_temp = {
+      'order_id':'#123',
+      'name': 'Murtuza Rahman',
+      'email': 'murtuza@gamil.com',
+      'phone': '01982',
+      'address': 'Dhaka, palton',
+      'delivery_type' : 'On table',
+      'payment_method' : 'Card'
+  };
+
+  this.globals.INVOICE_TO = invoice_to_temp;
+  this.invoice_to = this.globals.INVOICE_TO;
   }
 
   ngOnInit() {
@@ -57,21 +67,6 @@ export class OrderSuccessComponent implements OnInit {
     dummyOrder.total_price = "$50";
     dummyOrder.discount = "t";
     this.userOrders.push(dummyOrder)
-    
-    let invoice_to_temp = {
-        'order_id':'#123',
-        'name': 'Murtuza Rahman',
-        'email': 'murtuza@gamil.com',
-        'phone': '01982',
-        'address': 'Dhaka, palton',
-        'delivery_type' : 'On table',
-        'payment_method' : 'Card'
-    };
-
-    this.globals.INVOICE_TO = invoice_to_temp;
-    this.invoice_to = this.globals.INVOICE_TO;
-
-
   }
 
   gotoHomeBtnAction(){
