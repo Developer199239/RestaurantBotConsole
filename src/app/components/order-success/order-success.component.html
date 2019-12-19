@@ -1,12 +1,62 @@
-<div class="jumbotron text-center">
-    <h1 class="display-3">Thank You!</h1>
-    <p class="lead"><strong>Your order is successfully done.</strong></p>
-    <hr>
-    <p>
-      Having trouble? <a href="">Contact us</a>
-    </p>
-    <p class="lead">
-      <!-- <a class="btn btn-primary btn-sm" (click)="homeBtnAction" role="button">Home Page</a> -->
-      <button type="button" (click)="gotoHomeBtnAction()" class="btn btn-success">Success</button>
-    </p>
-  </div>
+<div class="jumbotron">
+        <h2 class="text-danger text-center">Your order has been placed</h2>
+        <h5 class="text-success text-center">Order ID: {{invoice_to.order_id}}</h5>
+        <br/>
+    
+        <h4>Invoice To:</h4>
+        <span>Name: {{invoice_to.name}}<br/></span>
+        <span>Email: {{invoice_to.email}}<br/></span>
+        <span>Phone: {{invoice_to.phone}}<br/></span>
+        <span>Address: {{invoice_to.address}}<br/></span>
+        <span>Delivery Type: {{invoice_to.delivery_type}}<br/></span>
+        <span>Payment Method: {{invoice_to.payment_method}}<br/></span>
+    
+        <h4><br/>Product</h4>
+    
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let order of userOrders">
+                <tr *ngIf="order.discount === 'g'">
+                    <td class="col-md-9">{{order.item_name}}</td>
+                    <td class="col-md-3"><i class="fa fa-inr"></i> {{order.total_price}}/-</td>
+                </tr>
+                <tr *ngIf="order.discount === 'd'">
+                    <td class="text-right">
+                        <p>
+                            <strong>Total Amount: </strong>
+                        </p>
+                        <p>
+                            <strong>Discount Amount: </strong>
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            <strong><i class="fa fa-inr"></i> {{order.total_price}}/-</strong>
+                        </p>
+                        <p>
+                            <strong><i class="fa fa-inr"></i> $0/-</strong>
+                        </p>
+                    </td>
+                </tr>
+                <tr *ngIf="order.discount === 't'">
+    
+                    <td class="text-right">
+                        <h2><strong>Total: </strong></h2></td>
+                    <td class="text-left text-danger">
+                        <h2><strong><i class="fa fa-inr"></i> $200/-</strong></h2></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p class="lead text-danger"><strong>A confirmation email has been sent to you.</strong></p>
+        <p class="lead text-center">
+            <!-- <a class="btn btn-primary btn-sm" (click)="homeBtnAction" role="button">Home Page</a> -->
+            <button type="button" (click)="gotoHomeBtnAction()" class="btn btn-success">Go To Home</button>
+        </p>
+    
+    </div>

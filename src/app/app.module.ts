@@ -11,6 +11,7 @@ import { OrderIdMissingComponent } from './components/order-id-missing/order-id-
 import { OrderItemComponent } from './components/order-item/order-item.component';
 import { MainComponent} from './components/main/main.component';
 import { PaypalComponent } from './components/paypal/paypal.component'
+import { Globals } from './globals';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,7 @@ import { PaypalComponent } from './components/paypal/paypal.component'
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [Globals],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
