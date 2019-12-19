@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Order } from 'src/app/models/Order';
 import { Globals } from 'src/app/globals';
+import { InvoiceModel } from 'src/app/models/InvoiceModel';
 
 @Component({
   selector: 'app-order-success',
@@ -10,22 +11,24 @@ import { Globals } from 'src/app/globals';
 })
 export class OrderSuccessComponent implements OnInit {
   userOrders: Order[] = [];
-  invoice_to = {};
+  invoice_to:InvoiceModel = new InvoiceModel();
   tet="";
   constructor(private router: Router, private globals: Globals) { 
-    let invoice_to_temp = {
-      'order_id':'#123',
-      'name': 'Murtuza Rahman',
-      'email': 'murtuza@gamil.com',
-      'phone': '01982',
-      'address': 'Dhaka, palton',
-      'delivery_type' : 'On table',
-      'payment_method' : 'Card'
-  };
-
-  this.globals.INVOICE_TO = invoice_to_temp;
+  //   let invoice_to_temp = {
+  //     'order_id':'#123',
+  //     'name': 'Murtuza Rahman',
+  //     'email': 'murtuza@gamil.com',
+  //     'phone': '01982',
+  //     'address': 'Dhaka, palton',
+  //     'delivery_type' : 'On table',
+  //     'payment_method' : 'Card'
+  // };
+  let model = new InvoiceModel();
+  model.orderId = "123";
+  this.globals.INVOICE_TO = model;
   this.invoice_to = this.globals.INVOICE_TO;
-  this.tet = globals.VAR1;
+
+
   }
 
   ngOnInit() {
