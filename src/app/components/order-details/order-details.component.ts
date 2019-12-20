@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Order } from "../../models/Order";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { OrderService } from "../../services/order.service";
 import { Globals } from "src/app/globals";
 
@@ -15,7 +15,8 @@ export class OrderDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private orderService: OrderService,
-    private globals: Globals
+    private globals: Globals,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -46,13 +47,14 @@ export class OrderDetailsComponent implements OnInit {
         row = new Order();
         row.item_name = "Total:";
         row.discount = "t";
-        row.total_price = item.price;
+        row.total_price = item.total_price;
         myOrders.push(row);
 
         this.globals.USER_ORDERS = myOrders;
       },
       er => {
         console.log("== get user order error " + er);
+        this.router.navigate(["notfound"]);
       }
     );
   }

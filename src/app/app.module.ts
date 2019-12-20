@@ -12,6 +12,7 @@ import { OrderItemComponent } from './components/order-item/order-item.component
 import { MainComponent} from './components/main/main.component';
 import { PaypalComponent } from './components/paypal/paypal.component'
 import { Globals } from './globals';
+import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { Globals } from './globals';
     OrderIdMissingComponent,
     OrderItemComponent,
     MainComponent,
-    PaypalComponent
+    PaypalComponent,
+    NotFoundPageComponent
   ],
   imports: [
     BrowserModule,
