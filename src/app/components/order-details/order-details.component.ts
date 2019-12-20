@@ -35,13 +35,14 @@ export class OrderDetailsComponent implements OnInit {
           myOrders.push(row);
         }
 
+        let item = this.orders[len - 1];
+
         let row = new Order();
         row.item_name = "Discount Amount:";
-        row.total_price = "$0";
+        row.total_price = item.total_price;
         row.discount = "d";
         myOrders.push(row);
 
-        let item = this.orders[len - 1];
         row = new Order();
         row.item_name = "Total:";
         row.discount = "t";
