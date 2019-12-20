@@ -1,26 +1,58 @@
-import { Component, OnInit } from '@angular/core';
-import { Order } from '../../models/Order';
-import { ActivatedRoute } from '@angular/router';
-import { OrderService } from '../../services/order.service'
+import { Component, OnInit } from "@angular/core";
+import { Order } from "../../models/Order";
+import { ActivatedRoute } from "@angular/router";
+import { OrderService } from "../../services/order.service";
+import { Globals } from "src/app/globals";
 
 @Component({
-  selector: 'app-order-details',
-  templateUrl: './order-details.component.html',
-  styleUrls: ['./order-details.component.css']
+  selector: "app-order-details",
+  templateUrl: "./order-details.component.html",
+  styleUrls: ["./order-details.component.css"]
 })
 export class OrderDetailsComponent implements OnInit {
   orders: Order[];
-  sender_id: String
-  constructor(private route: ActivatedRoute, private orderService: OrderService) { }
+  sender_id: String;
+  constructor(
+    private route: ActivatedRoute,
+    private orderService: OrderService,
+    private globals: Globals
+  ) {}
 
   ngOnInit() {
-    this.sender_id = this.route.snapshot.paramMap.get('id');
-    this.orderService.getUserOrder(String(this.sender_id)).subscribe(userOrders =>{
-      console.log(userOrders);
-      this.orders = userOrders;
-    }, er=>{
-      console.log("== get user order error "+er);
-    });
-  }
+    this.sender_id = this.route.snapshot.paramMap.get("id");
+    this.orderService.getUserOrder(String(this.sender_id)).subscribe(
+      userOrders => {
+        console.log(userOrders);
+        this.orders = userOrders;
+        let myOrders: Order[] = [];
+        let len = this.orders.length;
+        for (let i = 0; i < len - 1; i++) {
+          let item = this.orders[i];
+          let row = new Order();
+          row.item_name = item.item_name;
+          row.discount = "g";
+          row.total_price = item.price;
+          myOrders.push(row);
+        }
 
+        let row = new Order();
+        row.item_name = "Discount Amount:";
+        row.total_price = "$0";
+        row.discount = "d";
+        myOrders.push(row);
+
+        let item = this.orders[len - 1];
+        row = new Order();
+        row.item_name = "Total:";
+        row.discount = "t";
+        row.total_price = item.price;
+        myOrders.push(row);
+
+        this.globals.USER_ORDERS = myOrders;
+      },
+      er => {
+        console.log("== get user order error " + er);
+      }
+    );
+  }
 }
