@@ -3,6 +3,7 @@ import { Order } from "../../models/Order";
 import { ActivatedRoute, Router } from "@angular/router";
 import { OrderService } from "../../services/order.service";
 import { Globals } from "src/app/globals";
+import { InvoiceModel } from "src/app/models/InvoiceModel";
 
 @Component({
   selector: "app-order-details",
@@ -24,6 +25,16 @@ export class OrderDetailsComponent implements OnInit {
     this.orderService.getUserOrder(String(this.sender_id)).subscribe(
       userOrders => {
         console.log(userOrders);
+        let array_length = userOrders.length - 1;
+        //--- get last row for user info----
+        let user_info = userOrders[array_length];
+        let invoiceModel = this.globals.INVOICE_TO;
+        invoiceModel.deliveryType = user_info.item_name;
+        //---- set invoice info---
+        this.globals.INVOICE_TO = invoiceModel;
+        //--- remove last row that is user info--
+        userOrders.splice(array_length, 1);
+
         this.orders = userOrders;
         let myOrders: Order[] = [];
         let len = this.orders.length;
@@ -49,7 +60,6 @@ export class OrderDetailsComponent implements OnInit {
         row.discount = "t";
         row.total_price = item.total_price;
         myOrders.push(row);
-
         this.globals.USER_ORDERS = myOrders;
       },
       er => {

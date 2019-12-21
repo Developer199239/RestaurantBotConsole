@@ -99,15 +99,24 @@ export class UserDetailsComponent implements OnInit, AfterViewChecked {
         this.successModel = response;
         this.loading = false;
         if (this.successModel.success) {
+          let invoiceModel = this.globals.INVOICE_TO;
+          invoiceModel.orderId = this.sender_id;
+          invoiceModel.name = this.f.name.value;
+          invoiceModel.email = this.f.address.value;
+          invoiceModel.phone = this.f.phone.value;
+          invoiceModel.address = this.f.address.value;
+          invoiceModel.paymentMethod = "Card";
+          this.globals.INVOICE_TO = invoiceModel;
           this.router.navigate(["success"]);
         } else {
-          //todo failed handle and show message
+          this.router.navigate(["notfound"]);
         }
       },
       er => {
         console.log("== get user order error " + er);
         this.loading = false;
         //todo failed handle and show message
+        this.router.navigate(["notfound"]);
       }
     );
   }
@@ -122,13 +131,12 @@ export class UserDetailsComponent implements OnInit, AfterViewChecked {
       this.paymentId,
       this.cardId
     );
-    let invoiceModel = new InvoiceModel();
+    let invoiceModel = this.globals.INVOICE_TO;
     invoiceModel.orderId = this.sender_id;
     invoiceModel.name = this.f.name.value;
     invoiceModel.email = this.f.address.value;
     invoiceModel.phone = this.f.phone.value;
     invoiceModel.address = this.f.address.value;
-    invoiceModel.deliveryType = "On table. Table No. 12";
     invoiceModel.paymentMethod = "Card";
     this.globals.INVOICE_TO = invoiceModel;
     this.router.navigate(["success"]);
