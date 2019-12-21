@@ -61,6 +61,7 @@ export class OrderDetailsComponent implements OnInit {
         row.total_price = item.total_price;
         myOrders.push(row);
         this.globals.USER_ORDERS = myOrders;
+        this.globals.TOTAL_COST = Number(item.total_price);
       },
       er => {
         console.log("== get user order error " + er);

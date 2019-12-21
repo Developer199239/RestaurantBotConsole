@@ -75,13 +75,13 @@ export class UserDetailsComponent implements OnInit, AfterViewChecked {
 
     this.isShowPaypalPaymentView = true;
     //now block this for testing
-    // if (!this.addScript) {
-    //   this.addPaypalScript().then(() => {
-    //     paypal.Button.render(this.paypalConfig, '#paypal-checkout-btn');
-    //     this.paypalLoad = false;
-    //   })
-    // }
-    this.userInfoUpdateServiceCallDev();
+    if (!this.addScript) {
+      this.addPaypalScript().then(() => {
+        paypal.Button.render(this.paypalConfig, "#paypal-checkout-btn");
+        this.paypalLoad = false;
+      });
+    }
+    // this.userInfoUpdateServiceCallDev();
   }
 
   userInfoUpdateServiceCall() {
@@ -155,7 +155,7 @@ export class UserDetailsComponent implements OnInit, AfterViewChecked {
           transactions: [
             {
               amount: {
-                total: this.finalAmount,
+                total: this.globals.TOTAL_COST,
                 currency: environment.paypal.currency
               }
             }

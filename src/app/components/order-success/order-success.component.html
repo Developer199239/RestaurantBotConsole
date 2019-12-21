@@ -23,7 +23,7 @@
     <tbody *ngFor="let order of userOrders">
       <tr *ngIf="order.discount === 'g'">
         <td class="col-md-9">{{order.item_name}}</td>
-        <td class="col-md-3"><i class="fa fa-inr"></i> {{order.total_price}}/-</td>
+        <td class="col-md-3"><i class="fa fa-inr"></i> ${{order.total_price}}/-</td>
       </tr>
       <tr *ngIf="order.discount === 'd'">
         <td class="text-right">

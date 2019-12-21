@@ -8,4 +8,5 @@ export class Globals {
   VAR2 = "value2";
   INVOICE_TO: InvoiceModel = new InvoiceModel();
   USER_ORDERS: Order[] = [];
+  TOTAL_COST = 0;
 }
