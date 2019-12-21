@@ -1,31 +1,38 @@
 <h2 class="text-center">Your order id is <a href="#" class="text-danger">#{{ sender_id }}</a> </h2>
 <div>
-    <p class="font-weight-bold">Order Details</p>
-<div>
-            <table class="table table-sm">
-        <thead class="thead-light">
-          <tr>
-            <th>Image</th>
-            <th>Name</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Discount</th>
-            <th>Total</th>            
-          </tr>
-        </thead>
-        <tbody *ngFor="let order of orders" >
-          <tr style="height:50px">
-            <td>
-              <img *ngIf="order.image != ''"  style="width: 50px;height:50px;" class="img-fluid" src="{{ order.image }}" alt="food Image">
-              <span *ngIf="order.image === ''">Total</span>
-            </td>
-            <td>{{ order.item_name }}</td>
-            <td>{{ order.quantity }}</td>
-            <td>${{ order.price }}</td>
-            <td>${{ order.discount }}</td>
-            <td>${{ order.total_price }}</td>
-      </tr>
-        </tbody>
-      </table>
-    </div>
+  <p class="font-weight-bold">Order Details</p>
+  <div>
+    <table class="table table-sm">
+      <thead class="thead-light">
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Discount</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let order of orders">
+        <tr style="height:50px">
+          <td>
+            <img *ngIf="order.image != ''" style="width: 50px;height:50px;" class="img-fluid" src="{{ order.image }}"
+              alt="food Image">
+            <span *ngIf="order.image === ''">Total</span>
+          </td>
+          <td>{{ order.item_name }}</td>
+          <td>{{ order.quantity }}</td>
+          <td>
+            <span *ngIf="order.image != ''">${{ order.price }}</span>
+            <span *ngIf="order.image === ''"></span>
+          </td>
+          <td>
+            <span *ngIf="order.image != ''">${{ order.discount }}</span>
+            <span *ngIf="order.image === ''"></span>
+          </td>
+          <td>${{ order.total_price }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
