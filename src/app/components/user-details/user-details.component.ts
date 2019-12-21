@@ -36,6 +36,7 @@ export class UserDetailsComponent implements OnInit, AfterViewChecked {
   finalAmount = 1;
   paymentId: String;
   cardId: String;
+  mobiel_pattern = "^((\\+91-?)|0)?[0-9]{10}$";
 
   constructor(
     private formBuilder: FormBuilder,
@@ -49,13 +50,12 @@ export class UserDetailsComponent implements OnInit, AfterViewChecked {
     this.sender_id = this.route.snapshot.paramMap.get("id");
     this.userDetailForm = this.formBuilder.group({
       name: ["", Validators.required],
-      email: [""],
+      email: ["", [Validators.required, Validators.email]],
       address: ["", Validators.required],
-      phone: ["", Validators.required]
-      // card_number: ['', Validators.required],
-      // security_code: ['', Validators.required],
-      // card_exp_month: ['', Validators.required],
-      // card_exp_year: ['', Validators.required],
+      phone: [
+        "",
+        [Validators.required, Validators.pattern("^((\\01-?)|0)?[0-9]{11}$")]
+      ]
     });
   }
 
@@ -70,6 +70,7 @@ export class UserDetailsComponent implements OnInit, AfterViewChecked {
     if (this.userDetailForm.invalid) {
       return;
     }
+
     this.loading = true;
 
     this.isShowPaypalPaymentView = true;

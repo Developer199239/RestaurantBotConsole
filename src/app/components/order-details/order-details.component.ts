@@ -54,7 +54,7 @@ export class OrderDetailsComponent implements OnInit {
       },
       er => {
         console.log("== get user order error " + er);
-        this.router.navigate(["notfound"]);
+        // this.router.navigate(["notfound"]);
       }
     );
   }
