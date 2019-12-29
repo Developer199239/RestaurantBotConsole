@@ -54,7 +54,7 @@ export class UserDetailsComponent implements OnInit, AfterViewChecked {
       address: ["", Validators.required],
       phone: [
         "",
-        [Validators.required, Validators.pattern("^((\\01-?)|0)?[0-9]{11}$")]
+        [Validators.required, Validators.pattern("^((\\01-?)|+)?[0-9]$")]
       ]
     });
   }
