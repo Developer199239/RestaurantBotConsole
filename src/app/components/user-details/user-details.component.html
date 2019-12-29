@@ -44,6 +44,10 @@
     </div>
   </form>
 
+  <div *ngIf="isShowPaypalPaymentView" class="alert alert-info">
+    <strong>Info!</strong> Please click on Paypal Checkout button.
+  </div>
+
   <div *ngIf="isShowPaypalPaymentView" class="m-5 form-group text-center">
     <h2 *ngIf="paypalLoad">Paypal button is loading</h2>
     <div id="paypal-checkout-btn"></div>
