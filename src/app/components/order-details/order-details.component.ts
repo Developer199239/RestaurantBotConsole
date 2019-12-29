@@ -43,7 +43,7 @@ export class OrderDetailsComponent implements OnInit {
           let row = new Order();
           row.item_name = item.item_name;
           row.discount = "g";
-          row.total_price = item.price;
+          row.total_price = item.total_price;
           myOrders.push(row);
         }
 
