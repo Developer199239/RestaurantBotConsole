@@ -52,10 +52,7 @@ export class UserDetailsComponent implements OnInit, AfterViewChecked {
       name: ["", Validators.required],
       email: ["", [Validators.required, Validators.email]],
       address: ["", Validators.required],
-      phone: [
-        "",
-        [Validators.required, Validators.pattern("^((\\01-?)|+)?[0-9]$")]
-      ]
+      phone: ["", [Validators.required, Validators.pattern("^[+0-9]*$")]]
     });
   }
 
