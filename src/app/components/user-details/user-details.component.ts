@@ -99,7 +99,7 @@ export class UserDetailsComponent implements OnInit, AfterViewChecked {
           let invoiceModel = this.globals.INVOICE_TO;
           invoiceModel.orderId = this.sender_id;
           invoiceModel.name = this.f.name.value;
-          invoiceModel.email = this.f.address.value;
+          invoiceModel.email = this.f.email.value;
           invoiceModel.phone = this.f.phone.value;
           invoiceModel.address = this.f.address.value;
           invoiceModel.paymentMethod = "Card";
